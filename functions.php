@@ -94,7 +94,7 @@ add_action('customize_register', 'footer_contact_email');
  */
 function footer_contact_phone( $wp_customize ) {
     // Adding setting
-    $wp_customize->add_setting('footer_contact_phone');
+    $wp_customize->add_setting('footer_contact_phone'); 
 
     // Add control
     $wp_customize->add_control('footer_contact_phone', array(
