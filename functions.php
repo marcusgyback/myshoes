@@ -6,9 +6,8 @@ function theme_files() {
     wp_enqueue_style('responsive', get_theme_file_uri('/css/responsive.css'), NULL, microtime(), false);
     wp_enqueue_style('scrollbar', get_theme_file_uri('/css/jquery.mCustomScrollbar.min.css'), NULL, microtime(), false);
     wp_enqueue_style('font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', NULL, microtime(), false);
-    wp_enqueue_style('carousel', get_theme_file_uri('/css/owl.carousel.min.css'), NULL, microtime(), false);
     wp_enqueue_style('theme-default', get_theme_file_uri('/css/owl.theme.default.min.css'), NULL, microtime(), false);
-    wp_enqueue_style('fancybox', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css', NULL, microtime(), false);
+    wp_enqueue_style('bxslidercss', '//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css', NULL, microtime(), false);
 
     /* JS-files */
     wp_enqueue_script('shiv', '//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js', NULL, microtime(), false);
@@ -17,11 +16,10 @@ function theme_files() {
     wp_enqueue_script('popper', get_theme_file_uri('/js/popper.min.js'), NULL, microtime(), true);
     wp_enqueue_script('bootstrapbundle', get_theme_file_uri('/js/bootstrap.bundle.min.js'), NULL, microtime(), true);
     wp_enqueue_script('jquery3', get_theme_file_uri('/js/jquery-3.0.0.min.js'), NULL, microtime(), true);
-    wp_enqueue_script('pluginjs', get_theme_file_uri('/js/plugin.js'), NULL, microtime(), true);
     wp_enqueue_script('customScrollBar', get_theme_file_uri('/js/jquery.mCustomScrollbar.concat.min.js'), NULL, microtime(), true);
     wp_enqueue_script('customJs', get_theme_file_uri('/js/custom.js'), NULL, microtime(), true);
-    wp_enqueue_script('owlCarousel', get_theme_file_uri('/js/owl.carousel.js'), NULL, microtime(), true);
-    wp_enqueue_script('fancyboxJs', '//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js', NULL, microtime(), true);
+    wp_enqueue_script('bxsliderjs', '//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js', 'jquery3', microtime(), true);
+
 }
 
 add_action('wp_enqueue_scripts', 'theme_files');
