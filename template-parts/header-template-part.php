@@ -1,5 +1,5 @@
 <div class="header_main">
-    <div class="logo"><a href="index.html"><img src="<?php echo esc_attr(get_theme_mod('site_logo')); ?>"></a></div>
+    <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo esc_attr(get_theme_mod('site_logo')); ?>"></a></div>
     <div class="number_text">No<br><span style="color: #fff;">01</span></div>
     <div class="search_icon"><a href="index.html"><img src="<?php echo get_theme_file_uri(); ?>/images/search-icon.png"></a></div>
     <a class="header_cart" href="<?php echo WC()->cart->get_cart_url(); ?>">

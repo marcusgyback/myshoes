@@ -11,8 +11,9 @@ jQuery(function ($) {
 		let productId = $(this).attr('data-product-id');
 		let quantity = parseInt($('.product-'+productId).val());
 
-		if(quantity < 1) {
+		if(quantity <= 1) {
 			quantity = 1;
+			$('.product-'+productId).val(quantity);
 		} else {
 			$('.product-'+productId).val(quantity -1);
 		}

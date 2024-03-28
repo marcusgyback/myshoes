@@ -77,10 +77,20 @@ $productImages = $product->get_gallery_image_ids();
                 }
 
                 ?>
-                <hr/>
                 <div class="product-info-btn">
                     <b>Specifications</b>
                     <i class="fa fa-plus"></i>
+                </div>
+                <hr/>
+                <div class="add-review pt-3">
+                    <h3>Add a product review</h3>
+                    <form class="reviewForm">
+                        <label for="name">Name:</label>
+                        <input class="reviewinput" type="text" name="name" />
+                        <label for="reivew">Review:</label>
+                        <textarea class="reviewinput" name="review"></textarea>
+                        <input type="submit" value="Send" />
+                    </form>
                 </div>
                 <div class="product-info-btn">
                     <b>Reviews</b>

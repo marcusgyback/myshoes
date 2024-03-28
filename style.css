@@ -24,6 +24,30 @@ body {
     overflow-x: hidden;
 }
 
+.reviewForm input[type="text"] {
+    width: 100%;
+}
+.reviewForm textarea {
+    width: 100%;
+}
+.reviewForm label {
+    font-size: 14px;
+    font-weight: bold;
+}
+.reviewForm input[type="submit"] {
+    width: 100%;
+    background: #faca16;
+    border: 1px solid #faca16;
+    color: black;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.reviewForm input[type="submit"]:hover {
+    background: white;
+    color: #faca16;
+}
+
 .product-info-btn {
     border: 1px solid black;
     padding: 10px;
@@ -34,19 +58,6 @@ body {
     cursor: pointer;
 }
 
-.buy-button-box button {
-    display: inline-block;
-    padding: 8px 40px;
-    background-color: white;
-    color: black;
-    border: 1px solid transparent;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-}
-.buy-button-box button:hover {
-    background-color: white;
-    color: #faca16;
-}
 .add-to-cart-quantity {
     background-color: white;
     color: black;
@@ -595,24 +606,20 @@ button {
 }
 
 .boy_bt_1 {
-    width: 140px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.boy_bt_1 a {
     width: 100%;
     float: left;
     font-size: 16px;
     color: #13110f;
-    background-color: #ffffff;
+    background-color: #f9ca16;
     text-align: center;
-    padding: 7px 0px;
+    padding: 6px 0px;
+    font-weight: bold;
+    border: 1px solid #f9ca16;
 }
 
-.boy_bt_1 a:hover {
-    color: #ffffff;
-    background-color: #f9ca16;
+.boy_bt_1:hover {
+    color: #f9ca16;
+    background-color: white;
 }
 
 .news_section {
