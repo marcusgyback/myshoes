@@ -100,9 +100,26 @@ $productImages = $product->get_gallery_image_ids();
         </div>
         <div class="row mb-5">
             <div class="col-md-12">
-                <hr/>
                 <h2>Recommended products</h2>
+                <hr/>
             </div>
+            <?php
+
+            $productRecommendations = get_post_meta(get_the_ID(), 'acf_product_recommendations');
+            foreach($productRecommendations as $productRecommendation) {
+                foreach($productRecommendation as $product_r) {
+
+                    $product_r = new WC_Product($product_r);
+
+                    ?>
+                    <div class="col-md-3">
+                        <img src="<?php echo wp_get_attachment_url($product_r->get_image_id()); ?>"/>
+                    </div>
+                    <?php
+                }
+            }
+
+            ?>
         </div>
     </div>
 </section>
