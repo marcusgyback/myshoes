@@ -77,6 +77,16 @@ $productImages = $product->get_gallery_image_ids();
                 }
 
                 ?>
+                <?php
+
+                $review = new WP_Query(array(
+                    'post_type' => 'reviews',
+                    'post_status' => 'publish',
+                    'post_parent' => get_the_ID(),
+                    'posts_per_page' => 5
+                ));
+
+                ?>
                 <div class="product-info-btn">
                     <b>Specifications</b>
                     <i class="fa fa-plus"></i>
@@ -84,17 +94,42 @@ $productImages = $product->get_gallery_image_ids();
                 <hr/>
                 <div class="add-review pt-3">
                     <h3>Add a product review</h3>
-                    <form class="reviewForm">
+                    <?php if(is_user_logged_in()) { ?>
+                    <form id="reviewForm" class="reviewForm">
                         <label for="name">Name:</label>
                         <input class="reviewinput" type="text" name="name" />
                         <label for="reivew">Review:</label>
                         <textarea class="reviewinput" name="review"></textarea>
+                        <input type="hidden" name="userId" value="<?php echo get_current_user_id(); ?>" />
+                        <input type="hidden" name="productId" value="<?php echo get_the_ID(); ?>" />
+                        <input type="hidden" name="destination" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
                         <input type="submit" value="Send" />
                     </form>
+                    <?php } else { ?>
+                    Please login to add a review for this product
+                    <?php } ?>
                 </div>
-                <div class="product-info-btn">
-                    <b>Reviews</b>
+                <div class="product-info-btn toggle-product-reviews">
+                    <b>Reviews ( <?php echo $review->found_posts; ?> )</b>
                     <i class="fa fa-plus"></i>
+                </div>
+                <div class="product_reviews">
+                    <?php
+
+                    while($review->have_posts()) {
+                        $review->the_post();
+                        ?>
+                        <b>Review from <?php echo get_the_title(); ?></b><br/>
+                        <?php echo get_the_content(); ?>
+                        <?php if($review->found_posts > 1) {
+                            ?>
+                            <hr/>
+                            <?php
+                        }?>
+                        <?php
+                    }
+                    wp_reset_postdata();
+                    ?>
                 </div>
             </div>
         </div>
@@ -114,6 +149,31 @@ $productImages = $product->get_gallery_image_ids();
                     ?>
                     <div class="col-md-3">
                         <img src="<?php echo wp_get_attachment_url($product_r->get_image_id()); ?>"/>
+                        <form method="get">
+                            <div class="row">
+                                <div class="col-md-6 pr-0">
+                                    <div class="add-to-cart-quantity">
+                                        <div class="input-group">
+                                            <span>
+                                                <button type="button" class="quantity-left-minus btn btn-transparent btn-number" data-product-id="<?php echo $product_r->get_id(); ?>">
+                                                    <span class="fa fa-minus"></span>
+                                                </button>
+                                                <input type="hidden" name="add-to-cart" value="<?php echo $product_r->get_id(); ?>" />
+                                                <input id="quantity" type="text" name="quanity" class="form-control input-number product-<?php echo $product_r->get_id(); ?>" value="1" min="1" max="100"/>
+                                                <button type="button" class="quantity-right-plus btn btn-transparent btn-number" data-product-id="<?php echo $product_r->get_id(); ?>">
+                                                    <span class="fa fa-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pl-0">
+                                    <div class="buy-button-box">
+                                        <button type="submit" class="boy_bt_1">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <?php
                 }

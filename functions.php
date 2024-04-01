@@ -1,5 +1,7 @@
 <?php
 
+require get_theme_file_path('/inc/product-review-routes.php');
+
 function theme_files() {
     /* CSS-files */
     wp_enqueue_style('bootstrap', get_theme_file_uri('/css/bootstrap.css'), NULL, microtime(), false);
@@ -19,6 +21,10 @@ function theme_files() {
     wp_enqueue_script('customScrollBar', get_theme_file_uri('/js/jquery.mCustomScrollbar.concat.min.js'), NULL, microtime(), true);
     wp_enqueue_script('customJs', get_theme_file_uri('/js/custom.js'), NULL, microtime(), true);
     wp_enqueue_script('bxsliderjs', '//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js', 'jquery3', microtime(), true);
+    wp_localize_script('customJs', 'themeData', array(
+        'root_url' => get_site_url(),
+        'nonce' => wp_create_nonce('site-nonce')
+    ));
 
 }
 

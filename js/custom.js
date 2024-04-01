@@ -36,4 +36,24 @@ jQuery(function ($) {
 		$(".slider").bxSlider();
 	});
 
+	$('#reviewForm').submit(function (e) {
+		e.preventDefault();
+
+		$.ajax({
+			url: 'http://myshoes.com/wp-json/myshoes/v1/manageReviews',
+			type: 'POST',
+			dataType: 'application/json',
+			data: $('form#reviewForm').serialize()
+		});
+
+		setTimeout(function() {
+			window.location.reload();
+		}, 1000);
+	});
+
+	$('.toggle-product-reviews').on('click', function() {
+		$('.product_reviews').toggle();
+		$('.toggle-product-reviews i').toggleClass('fa-plus').toggleClass('fa-minus');
+	});
+
 });
