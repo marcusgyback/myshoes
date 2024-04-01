@@ -34,7 +34,26 @@ $productImages = $product->get_gallery_image_ids();
     <div class="container">
         <div class="row pt-5">
             <div class="col-md-7">
-                <img src="<?php echo wp_get_attachment_url($product->get_image_id()); ?>" />
+                <?php
+
+                if(!empty($productImages)) {
+                    ?>
+                    <div class="slider">
+                        <?php
+                        foreach($productImages as $productImage) {
+                            ?>
+                            <img src="<?php echo wp_get_attachment_url($productImage); ?>" />
+                            <?php
+                        }
+                        ?>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <img src="<?php echo wp_get_attachment_url($product->get_image_id()); ?>" />
+                    <?php
+                }
+                ?>
             </div>
             <div class="col-md-5">
                 <h2><?php echo $product->get_name(); ?></h2>
@@ -46,16 +65,16 @@ $productImages = $product->get_gallery_image_ids();
                         <div class="col-md-6 pr-0">
                             <div class="add-to-cart-quantity">
                                 <div class="input-group">
-                                            <span>
-                                                <button type="button" class="quantity-left-minus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>">
-                                                    <span class="fa fa-minus"></span>
-                                                </button>
-                                                <input type="hidden" name="add-to-cart" value="<?php echo $product->get_id(); ?>" />
-                                                <input id="quantity" type="text" name="quanity" class="form-control input-number product-<?php echo $product->get_id(); ?>" value="1" min="1" max="100"/>
-                                                <button type="button" class="quantity-right-plus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>">
-                                                    <span class="fa fa-plus"></span>
-                                                </button>
-                                            </span>
+                                    <span>
+                                        <button type="button" class="quantity-left-minus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>">
+                                            <span class="fa fa-minus"></span>
+                                        </button>
+                                        <input type="hidden" name="add-to-cart" value="<?php echo $product->get_id(); ?>" />
+                                        <input id="quantity" type="text" name="quanity" class="form-control input-number product-<?php echo $product->get_id(); ?>" value="1" min="1" max="100"/>
+                                        <button type="button" class="quantity-right-plus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>">
+                                            <span class="fa fa-plus"></span>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                         </div>
