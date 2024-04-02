@@ -37,7 +37,7 @@ Adding woocommerce support to the theme
 function myshoes_woocommerce_support() {
     add_theme_support('woocommerce');
 }
-add_action('after_theme_setup', 'myshoes_woocommerce_support');
+add_action('after_setup_theme', 'myshoes_woocommerce_support');
 
 /*
  * Adding the ability to change logo using the customizer

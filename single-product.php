@@ -4,7 +4,6 @@ get_header();
 $product = new WC_Product(get_the_ID());
 $productImages = $product->get_gallery_image_ids();
 ?>
-<body>
 <!--header section start -->
 <div class="header_section" style="background-image: url('<?php echo get_theme_file_uri(); ?>/images/running_track.jpg')">
     <div class="container-fluid">
