@@ -70,7 +70,9 @@ get_header();
                     $product = new WC_Product(get_the_ID());
                 ?>
                 <div class="col-sm-3">
-                    <div class="image_1"><?php echo $product->get_image(); ?></div>
+                    <a href="<?php echo get_the_permalink($product->get_id()); ?>">
+                        <div class="image_1"><?php echo $product->get_image(); ?></div>
+                    </a>
                     <div class="price_text">$<span style="color: #f9ca16;"><?php echo $product->get_regular_price(); ?></span></div>
                     <h1 class="shoes_text"><?php echo $product->get_name(); ?></h1>
                     <div class="add-to-cart-box">

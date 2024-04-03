@@ -23,7 +23,9 @@ body {
     font-weight: normal;
     overflow-x: hidden;
 }
-
+.product-specs {
+    display: none;
+}
 .product_reviews {
     display: none;
 }

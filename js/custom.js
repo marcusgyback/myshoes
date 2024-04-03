@@ -56,4 +56,9 @@ jQuery(function ($) {
 		$('.toggle-product-reviews i').toggleClass('fa-plus').toggleClass('fa-minus');
 	});
 
+	$('.toggle-product-specs').on('click', function() {
+		$('.product-specs').toggle();
+		$('.toggle-product-specs i').toggleClass('fa-plus').toggleClass('fa-minus');
+	});
+
 });

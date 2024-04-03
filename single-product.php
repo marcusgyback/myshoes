@@ -105,9 +105,12 @@ $productImages = $product->get_gallery_image_ids();
                 ));
 
                 ?>
-                <div class="product-info-btn">
+                <div class="product-info-btn toggle-product-specs">
                     <b>Specifications</b>
                     <i class="fa fa-plus"></i>
+                </div>
+                <div class="product-specs">
+                   <?php echo get_field('acf_product_specifications'); ?>
                 </div>
                 <hr/>
                 <div class="add-review pt-3">
@@ -166,7 +169,9 @@ $productImages = $product->get_gallery_image_ids();
 
                     ?>
                     <div class="col-md-3">
-                        <img src="<?php echo wp_get_attachment_url($product_r->get_image_id()); ?>"/>
+                        <a href="<?php echo get_the_permalink($product_r->get_id()); ?>">
+                            <img src="<?php echo wp_get_attachment_url($product_r->get_image_id()); ?>"/>
+                        </a>
                         <form method="get">
                             <div class="row">
                                 <div class="col-md-6 pr-0">
