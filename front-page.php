@@ -86,7 +86,7 @@ get_header();
                                                     <span class="fa fa-minus"></span>
                                                 </button>
                                                 <input type="hidden" name="add-to-cart" value="<?php echo $product->get_id(); ?>" />
-                                                <input id="quantity" type="text" name="quanity" class="form-control input-number product-<?php echo $product->get_id(); ?>" value="1" min="1" max="100"/>
+                                                <input id="quantity" type="text" name="quantity" class="form-control input-number product-<?php echo $product->get_id(); ?>" value="1" min="1" max="100"/>
                                                 <button type="button" class="quantity-right-plus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>">
                                                     <span class="fa fa-plus"></span>
                                                 </button>

@@ -23,6 +23,14 @@ body {
     font-weight: normal;
     overflow-x: hidden;
 }
+
+.cart_section span.amount {
+    color: black;
+}
+.cart-image {
+    width: 90px;
+    height: auto;
+}
 .product-specs {
     display: none;
 }
