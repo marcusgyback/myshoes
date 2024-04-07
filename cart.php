@@ -36,6 +36,7 @@ get_header();
             </div>
         </div>
         <div class="row">
+            <?php if(!empty(WC()->cart->get_cart_contents())) { ?>
             <div class="col-md-8">
                 <?php
 
@@ -43,7 +44,7 @@ get_header();
                 foreach($items as $item) {
                     $product = wc_get_product($item['product_id']);
                     ?>
-                    <div class="card mb-2">
+                    <div class="card mb-2 product-<?php echo $product->get_id(); ?>">
                         <div class="row no-gutters">
                             <div class="col-auto">
                                 <img src="<?php echo wp_get_attachment_url($product->get_image_id()); ?>" class="cart-image">
@@ -84,7 +85,7 @@ get_header();
                             </div>
                             <div class="col" style="align-content: center; margin-top: 0.5rem; margin-left: 3rem;">
                                 <div class="card-block px-2">
-                                    <h2><i class="fa fa-trash-o"></i></h2>
+                                    <h2><i class="fa fa-trash-o remove-product" data-product-id="<?php echo $product->get_id(); ?>"></i></h2>
                                 </div>
                             </div>
                         </div>
@@ -97,11 +98,16 @@ get_header();
             <div class="col-md-4">
                 <h3>Summary</h3>
                 <hr/>
-                <h4>Sub total: <?php echo WC()->cart->get_total_ex_tax(); ?></h4>
+                <h4 class="subtotal">Sub total: <?php echo WC()->cart->get_total_ex_tax(); ?></h4>
                 <hr/>
-                <h4>Total amount: <?php echo WC()->cart->get_cart_total(); ?></h4>
+                <h4 class="total">Total amount: <?php echo WC()->cart->get_cart_total(); ?></h4>
                 <a href="<?php echo WC()->cart->get_checkout_url(); ?>" class="boy_bt_1">Go to checkout</a>
             </div>
+            <?php } else { ?>
+            <div class="col-md-12">
+                <h3>Ops, it looks like your cart is empty.</h3>
+            </div>
+            <?php } ?>
         </div>
         <div class="row">
             <div class="col-md-12">

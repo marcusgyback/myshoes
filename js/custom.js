@@ -61,4 +61,25 @@ jQuery(function ($) {
 		$('.toggle-product-specs i').toggleClass('fa-plus').toggleClass('fa-minus');
 	});
 
+	$('.remove-product').on('click', function(e) {
+		e.preventDefault();
+
+		let productId = $(this).attr('data-product-id');
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: '/wp-admin/admin-ajax.php',
+			data: {action: 'product_remove',
+				product_id: productId
+			}, success: function(response) {
+
+				$('a.header_cart > span > span').replaceWith(response.data.total);
+				$('.product-'+productId).hide();
+
+				$('h4.subtotal > span').replaceWith(response.data.subtotal);
+				$('h4.total > span').replaceWith(response.data.total);
+			}
+		});
+	});
+
 });

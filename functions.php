@@ -94,7 +94,7 @@ function footer_contact_email( $wp_customize ) {
 add_action('customize_register', 'footer_contact_email');
 
 /*
- * Adding the ability to change the contact email in the footer
+ * Adding the ability to change the contact phone in the footer
  */
 function footer_contact_phone( $wp_customize ) {
     // Adding setting
@@ -108,3 +108,26 @@ function footer_contact_phone( $wp_customize ) {
     ));
 }
 add_action('customize_register', 'footer_contact_phone');
+
+/*
+ * Function to remove products from cart
+ */
+add_action('wp_ajax_product_remove', 'remove_product');
+add_action('wp_ajax_nopriv_product_remove', 'remove_product');
+function remove_product() {
+    global $woocommerce;
+    $cart = $woocommerce->cart;
+
+    foreach($woocommerce->cart->get_cart() as $cart_item_key => $cart_item) {
+        if($cart_item['product_id'] == $_POST['product_id']) {
+            $cart->remove_cart_item($cart_item_key);
+        }
+    }
+
+    $data = [
+        'subtotal' => WC()->cart->get_total_ex_tax(),
+        'total' => WC()->cart->get_cart_total(),
+    ];
+
+    return wp_send_json_success($data);
+}
