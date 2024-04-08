@@ -82,4 +82,64 @@ jQuery(function ($) {
 		});
 	});
 
+	$('.cart-quantity-right-plus').on('click', function(e) {
+		e.preventDefault();
+
+		let productId = $(this).attr('data-product-id');
+		let productKey = $(this).attr('data-product-key');
+
+		let quantity = parseInt($('.cart-product-'+productId).val());
+
+		if(quantity > 99) {
+			quantity = 99;
+		} else {
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: '/wp-admin/admin-ajax.php',
+				data: {
+					action: 'change_cart_item_quantity',
+					productKey: productKey,
+					quantity: quantity + 1
+				}, success: function(response) {
+					$('a.header_cart > span > span').replaceWith(response.data.total);
+					$('h4.subtotal > span').replaceWith(response.data.subtotal);
+					$('h4.total > span').replaceWith(response.data.total);
+					$('.cart-product-'+productId).val(quantity + 1);
+				}
+			});
+		}
+
+	});
+
+	$('.cart-quantity-left-minus').on('click', function(e) {
+		e.preventDefault();
+
+		let productId = $(this).attr('data-product-id');
+		let productKey = $(this).attr('data-product-key');
+
+		let quantity = parseInt($('.cart-product-'+productId).val());
+
+		if(quantity < 1) {
+			quantity = 1;
+		} else {
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: '/wp-admin/admin-ajax.php',
+				data: {
+					action: 'change_cart_item_quantity',
+					productKey: productKey,
+					quantity: quantity - 1
+				}, success: function(response) {
+					$('a.header_cart > span > span').replaceWith(response.data.total);
+					$('h4.subtotal > span').replaceWith(response.data.subtotal);
+					$('h4.total > span').replaceWith(response.data.total);
+					$('.cart-product-'+productId).val(quantity - 1);
+				}
+			});
+		}
+
+	});
+
 });

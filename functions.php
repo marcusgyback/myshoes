@@ -131,3 +131,23 @@ function remove_product() {
 
     return wp_send_json_success($data);
 }
+/*
+ * Function to change the quantity of the products in our cart
+ */
+add_action('wp_ajax_change_cart_item_quantity', 'change_cart_item_quantity');
+add_action('wp_ajax_nopriv_change_cart_item_quantity', 'change_cart_item_quantity');
+function change_cart_item_quantity() {
+
+    global $woocommerce;
+    $item_key = $_REQUEST['productKey'];
+    $quantity = $_REQUEST['quantity'];
+
+    $woocommerce->cart->set_quantity($item_key, $quantity);
+
+    $data = [
+        'subtotal' => WC()->cart->get_total_ex_tax(),
+        'total' => WC()->cart->get_cart_total(),
+    ];
+
+    return wp_send_json_success($data);
+}

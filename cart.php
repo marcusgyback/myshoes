@@ -69,12 +69,12 @@ get_header();
                                         <div class="add-to-cart-quantity">
                                             <div class="input-group">
                                         <span>
-                                            <button type="button" class="quantity-left-minus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>">
+                                            <button type="button" class="cart-quantity-left-minus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>" data-product-key="<?php echo $item['key']; ?>">
                                                 <span class="fa fa-minus"></span>
                                             </button>
                                             <input type="hidden" name="add-to-cart" value="<?php echo $product->get_id(); ?>" />
-                                            <input id="quantity" type="text" name="quantity" class="form-control input-number product-<?php echo $product->get_id(); ?>" value="<?php echo $item['quantity']; ?>" min="1" max="100"/>
-                                            <button type="button" class="quantity-right-plus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>">
+                                            <input id="quantity" type="text" name="quantity" class="form-control input-number cart-product-<?php echo $product->get_id(); ?>" value="<?php echo $item['quantity']; ?>" min="1" max="100"/>
+                                            <button type="button" class="cart-quantity-right-plus btn btn-transparent btn-number" data-product-id="<?php echo $product->get_id(); ?>" data-product-key="<?php echo $item['key']; ?>">
                                                 <span class="fa fa-plus"></span>
                                             </button>
                                         </span>
@@ -96,6 +96,19 @@ get_header();
                 ?>
             </div>
             <div class="col-md-4">
+                <h3>Coupons</h3>
+                <hr/>
+                <?php
+
+                wc_get_template(
+                    'checkout/form-coupon.php',
+                    array(
+                        'checkout' => WC()->checkout(),
+                    )
+                );
+
+                ?>
+                <hr/>
                 <h3>Summary</h3>
                 <hr/>
                 <h4 class="subtotal">Sub total: <?php echo WC()->cart->get_total_ex_tax(); ?></h4>
