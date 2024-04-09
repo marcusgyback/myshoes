@@ -96,20 +96,27 @@ get_header();
                 ?>
             </div>
             <div class="col-md-4">
-                <h3>Coupons</h3>
-                <hr/>
+                <?php if(empty(WC()->cart->get_applied_coupons())) { ?>
+                <h3>Cupon code</h3>
+                <form id="couponcode">
+                    <input type="text" name="coupon_code" id="coupon_code"/>
+                    <button type="submit" class="boy_bt_1">Apply coupon code</button>
+                </form>
+                <hr style="margin-top: 4rem;"/>
+                <?php } ?>
+                <h3>Summary</h3>
                 <?php
 
-                wc_get_template(
-                    'checkout/form-coupon.php',
-                    array(
-                        'checkout' => WC()->checkout(),
-                    )
-                );
+                $appliedCoupons = WC()->cart->get_applied_coupons();
+                foreach($appliedCoupons as $couponCode) {
+                    $coupon = new WC_Coupon($couponCode);
+                    ?>
+                    <hr/>
+                    <h4>Applied Coupons: <?php echo $coupon->amount.' '.$coupon->discount_type; ?></h4>
+                    <?php
+                }
 
                 ?>
-                <hr/>
-                <h3>Summary</h3>
                 <hr/>
                 <h4 class="subtotal">Sub total: <?php echo WC()->cart->get_total_ex_tax(); ?></h4>
                 <hr/>

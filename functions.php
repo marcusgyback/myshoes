@@ -151,3 +151,20 @@ function change_cart_item_quantity() {
 
     return wp_send_json_success($data);
 }
+
+/*
+ * Function to apply coupons
+ */
+add_action('wp_ajax_apply_coupons', 'apply_coupons');
+add_action('wp_ajax_nopriv_apply_coupons', 'apply_coupons');
+function apply_coupons() {
+    WC()->cart->remove_coupons();
+
+    $couponCode = $_POST['couponCode'];
+    $res = WC()->cart->add_discount($couponCode);
+    $data = [
+        'message' => $res
+    ];
+
+    return wp_send_json_success($data);
+}

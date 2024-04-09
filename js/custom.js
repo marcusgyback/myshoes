@@ -139,7 +139,24 @@ jQuery(function ($) {
 				}
 			});
 		}
+	});
 
+	$('form#couponcode').submit(function(e) {
+		e.preventDefault();
+		let coupon = $('#coupon_code').val();
+
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: '/wp-admin/admin-ajax.php',
+			data: {
+				action: 'apply_coupons',
+				couponCode: coupon
+			}, success: function(response) {
+				$('#coupon_code').val('');
+				location.reload();
+			}
+		});
 	});
 
 });
