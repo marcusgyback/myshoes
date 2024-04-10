@@ -109,14 +109,86 @@ get_header();
                         </form>
                     </div>
                 </div>
-                <?php } ?>
+                <?php }
+                wp_reset_postdata();
+                ?>
             </div>
         </div>
     </div>
 </div>
 <!--gallery section end -->
 
+<!-- Campaign section start -->
+
+<div class="campaign_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <h1>On Sale!</h1>
+            </div>
+            <?php
+
+            $campaignProducts = new WP_Query(array(
+                'post_type' => 'product',
+                'post_status' => 'publish',
+                'posts_per_page' => 4,
+                'meta_query' => array (
+                    array(
+                        'key' => 'acf_campaign_product',
+                        'value' => '1',
+                        'compare' => '='
+                    )
+                )
+            ));
+
+            while($campaignProducts->have_posts()) {
+                $campaignProducts->the_post();
+                $campaignProduct = new WC_Product(get_the_ID());
+                ?>
+                <?php if(!empty($campaignProduct->get_sale_price()) && $campaignProduct->get_sale_price() < $campaignProduct->get_regular_price()) { ?>
+                    <div class="col-md-3">
+                        <a href="<?php echo get_the_permalink($campaignProduct->get_id()); ?>">
+                            <img src="<?php echo wp_get_attachment_url($campaignProduct->get_image_id()); ?>"/>
+                        </a>
+                        <form method="get">
+                            <div class="row">
+                                <div class="col-md-6 pr-0">
+                                    <div class="add-to-cart-quantity">
+                                        <div class="input-group">
+                                            <span>
+                                                <button type="button" class="quantity-left-minus btn btn-transparent btn-number" data-product-id="<?php echo $campaignProduct->get_id(); ?>">
+                                                    <span class="fa fa-minus"></span>
+                                                </button>
+                                                <input type="hidden" name="add-to-cart" value="<?php echo $campaignProduct->get_id(); ?>" />
+                                                <input id="quantity" type="text" name="quanity" class="form-control input-number product-<?php echo $campaignProduct->get_id(); ?>" value="1" min="1" max="100"/>
+                                                <button type="button" class="quantity-right-plus btn btn-transparent btn-number" data-product-id="<?php echo $campaignProduct->get_id(); ?>">
+                                                    <span class="fa fa-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pl-0">
+                                    <div class="buy-button-box">
+                                        <button type="submit" class="boy_bt_1">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                <?php } ?>
+                <?php
+            }
+            wp_reset_postdata();
+            ?>
+        </div>
+    </div>
+</div>
+
+<!-- Campaign section end -->
+
 <!--news section start -->
+<hr/>
 <div class="news_section layout_padding">
     <div class="container">
         <h1 class="news_taital"><?php echo get_field('acf_start_page_news_heading'); ?></h1>
