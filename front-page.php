@@ -74,7 +74,7 @@ get_header();
                         <div class="image_1"><?php echo $product->get_image(); ?></div>
                     </a>
                     <div class="price_text">
-                        <?php if(!empty($product->get_sale_price()3) && $product->get_sale_price() < $product->get_regular_price()) { ?>
+                        <?php if(!empty($product->get_sale_price()) && $product->get_sale_price() < $product->get_regular_price()) { ?>
                             $<span style="color: #f9ca16;"><?php echo $product->get_sale_price(); ?></span>&nbsp;&nbsp;<s>$<span style="color: #f9ca16;"><?php echo $product->get_regular_price(); ?></span></s>
                         <?php } else { ?>
                             $<span style="color: #f9ca16;"><?php echo $product->get_regular_price(); ?></span>
