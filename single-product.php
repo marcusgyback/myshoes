@@ -57,7 +57,12 @@ $productImages = $product->get_gallery_image_ids();
             <div class="col-md-5">
                 <h2><?php echo $product->get_name(); ?></h2>
                 <hr/>
-                <b>Price: <?php echo $product->get_regular_price(); ?> <?php echo get_woocommerce_currency(); ?></b>
+                <?php if($product->get_sale_price() < $product->get_regular_price()) { ?>
+                    <b>Campaign price: <?php echo $product->get_sale_price(); ?> <?php echo get_woocommerce_currency(); ?></b><br/>
+                    <s>Price: <?php echo $product->get_regular_price(); ?> <?php echo get_woocommerce_currency(); ?></s>
+                <?php } else { ?>
+                    <b>Price: <?php echo $product->get_regular_price(); ?> <?php echo get_woocommerce_currency(); ?></b>
+                <?php } ?>
                 <hr/>
                 <form method="get">
                     <div class="row">

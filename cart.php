@@ -58,9 +58,16 @@ get_header();
                             </div>
                             <div class="col" style="align-content: center; margin-top: 1.5rem;">
                                 <div class="card-block px-2">
-                                    <h4 class="card-title">
-                                        $<?php echo $item['quantity'] * $product->get_regular_price(); ?>
-                                    </h4>
+                                    <?php if($product->get_sale_price() < $product->get_regular_price()) { ?>
+                                        <h4 class="card-title">
+                                            $<?php echo $item['quantity'] * $product->get_sale_price(); ?><br/>
+                                            <s>$<?php echo $item['quantity'] * $product->get_regular_price(); ?></s>
+                                        </h4>
+                                    <?php } else { ?>
+                                        <h4 class="card-title">
+                                            $<?php echo $item['quantity'] * $product->get_regular_price(); ?>
+                                        </h4>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="col" style="align-content: center;">
