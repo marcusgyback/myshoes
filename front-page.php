@@ -3,7 +3,7 @@
 
 get_header();
 ?>
-<body>
+
 <!--header section start -->
 <div class="header_section" style="background-image: url('<?php echo get_field('acf_startpage_banner_image')['url']; ?>'">
     <div class="container-fluid">

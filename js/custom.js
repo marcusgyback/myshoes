@@ -159,4 +159,15 @@ jQuery(function ($) {
 		});
 	});
 
+	$('.search_icon > a').on('click', function(e) {
+		e.preventDefault();
+		$('.modal').show();
+		$('body').css('overflow-y', 'hidden');
+	});
+
+	$('.modal-content > span.close').on('click', function(e) {
+		e.preventDefault();
+		$('.modal').hide();
+		$('body').attr('style', '');
+	})
 });

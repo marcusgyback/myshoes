@@ -1,3 +1,6 @@
+<?php
+get_template_part('/template-parts/search-modal');
+?>
 <div class="header_main">
     <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo esc_attr(get_theme_mod('site_logo')); ?>"></a></div>
     <div class="number_text">No<br><span style="color: #fff;">01</span></div>
