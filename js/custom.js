@@ -170,4 +170,51 @@ jQuery(function ($) {
 		$('.modal').hide();
 		$('body').attr('style', '');
 	})
+
+	$('.site-search').keyup(function() {
+		let searchValue = $('.site-search').val();
+		let searchLength = searchValue.length;
+		let previousValue = "";
+
+		if(searchLength >= 3) {
+			$.getJSON(themeData.root_url + '/wp-json/myshoes/v1/search/?query=' + searchValue,
+				(results) => {
+				if(searchValue !== previousValue) {
+					$('.search-results').html(`
+					<hr/>
+					${results.product ? results.product.map((item) => `
+					<a href="${item.product_link}">
+						<div class="card mb-2 product-<?php echo $product->get_id(); ?>">
+							<div class="row no-gutters">
+								<div class="col-auto">
+									<img src="${item.product_image}" class="cart-image">
+								</div>
+								<div class="col" style="align-content: center; margin-top: 1.5rem;">
+									<div class="card-block px-2">
+										<h4 class="card-title">
+											${item.product_name}
+										</h4>
+									</div>
+								</div>
+								<div class="col" style="align-content: center; margin-top: 1.5rem;">
+										<h4 class="card-title">
+											${item.product_price} ${item.shop_currency}
+										</h4>
+								</div>
+								<div class="col" style="align-content: center; margin-top: 1.5rem;">
+										<h4 class="card-title">
+											Left in stock ${item.product_stock}
+										</h4>
+								</div>
+							</div>
+						</div>
+                    </a>
+					`).join("")
+					: '<p>The product you were looking for could not be found.</p>'
+					}
+					`)
+				}
+			});
+		}
+	});
 });

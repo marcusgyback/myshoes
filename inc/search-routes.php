@@ -32,8 +32,9 @@ function myShoesSearchResults($data) {
         if(get_post_type() === 'product') {
             $results['product'][] = [
                 'product_name' => $product->get_name(),
-                'product_image' => $product->get_image(),
+                'product_image' => wp_get_attachment_url($product->get_image_id()),
                 'product_price' => $productPrice,
+                'product_stock' => $product->get_stock_quantity(),
                 'shop_currency' => get_woocommerce_currency(),
                 'product_link' => $product->get_permalink()
             ];

@@ -23,6 +23,9 @@ body {
     font-weight: normal;
     overflow-x: hidden;
 }
+.search-results > p {
+    margin: 0;
+}
 .site-search {
     width: 100%;
     height: 40px;
