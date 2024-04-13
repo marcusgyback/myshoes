@@ -26,6 +26,24 @@ body {
 .search-results > p {
     margin: 0;
 }
+.wc-block-components-checkout-place-order-button {
+    background: #faca16;
+    color: black;
+    font-weight: bold;
+    border: 1px solid #faca16;
+}
+.wc-block-components-checkout-place-order-button:hover {
+    background-color: transparent;
+}
+.wc-block-checkout__main {
+    background-color: #dddddd;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+.wc-block-checkout__sidebar {
+    background-color: #faca16;
+    color: black;
+}
 .site-search {
     width: 100%;
     height: 40px;
