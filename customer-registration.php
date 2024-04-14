@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Customer Login
+ * Template Name: Customer Registration
  */
 get_header();
 ?>
@@ -28,28 +28,30 @@ get_header();
     </div>
 </div>
 <!--header section end -->
-<?php
-    $args = [
-        'redirect' => admin_url(),
-        'form_id' => 'customer_login',
-        'label_username' => __('Username'),
-        'label_password' => __('Password'),
-        'remember' => false,
-    ];
-?>
-<?php if(!is_user_logged_in()) { ?>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h3>Login</h3>
-            <?php wp_login_form($args); ?>
+            <h3>Create an account</h3>
+            <form id="customer_registration">
+                <label for="first_name">First name</label>
+                <input type="text" name="first_name" />
+                <label for="first_name">Last name</label>
+                <input type="text" name="last_name" />
+                <label for="first_name">Username</label>
+                <input type="text" name="username" />
+                <label for="first_name">Email</label>
+                <input type="text" name="email" />
+                <label for="first_name">Password</label>
+                <input type="password" name="password" />
+                <label for="first_name">Repeat password</label>
+                <input type="password" name="password2" />
+                <input id="registration_btn" type="submit" class="boy_bt_1" value="Create account">
+            </form>
         </div>
         <div class="col-md-4">
-            <h3>Don't have an account?</h3>
-            <a href="<?php home_url(); ?>/customer-registration" class="boy_bt_1">Create an account</a>
+            <h3>Do you already have an account?</h3>
+            <a href="<?php echo home_url(); ?>/customer-login" class="boy_bt_1">Log in</a>
         </div>
     </div>
 </div>
-<?php }
-get_footer();
-?>
+<?php get_footer(); ?>
