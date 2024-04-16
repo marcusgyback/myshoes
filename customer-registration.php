@@ -32,11 +32,18 @@ get_header();
     <div class="row">
         <div class="col-md-8">
             <h3>Create an account</h3>
+            <div id="registration-success">
+                Your account has been created
+                <a class="boy_bt_1" href="<?php echo home_url(); ?>/customer-login">Log in</a>
+            </div>
+            <div id="registration-error">
+                First name is required
+            </div>
             <form id="customer_registration">
                 <label for="first_name">First name</label>
                 <input id="first_name" type="text" name="first_name" />
                 <label for="last_name">Last name</label>
-                <input id="lastname" type="text" name="last_name" />
+                <input id="last_name" type="text" name="last_name" />
                 <label for="username">Username</label>
                 <input id="username" type="text" name="username" />
                 <label for="email">Email</label>

@@ -23,6 +23,22 @@ body {
     font-weight: normal;
     overflow-x: hidden;
 }
+#registration-error {
+    background: #efa2a9;
+    color: red;
+    border: 1px solid red;
+    padding: 1rem;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+}
+#registration-success {
+    background: #fde075;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+}
 #customer_registration {
     margin-bottom: 1.5rem;
 }

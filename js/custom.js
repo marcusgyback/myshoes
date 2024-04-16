@@ -57,8 +57,29 @@ jQuery(function ($) {
 		$.ajax({
 			url: 'http://myshoes.com/wp-json/myshoes/v1/customer',
 			type: 'POST',
-			dataType: 'application/json',
-			data: $('form#customer_registration').serialize()
+			data: $('form#customer_registration').serialize(),
+			success: function(response) {
+
+				console.log(response);
+
+				$('#registration-error').hide();
+				$('#registration-success').show();
+				$('#customer_registration #first_name').val('');
+				$('#customer_registration #last_name').val('');
+				$('#customer_registration #username').val('');
+				$('#customer_registration #email').val('');
+				$('#customer_registration #password').val('');
+				$('#customer_registration #password2').val('');
+			},
+			error: function(response) {
+				let array = $.parseJSON(response.responseText);
+				$.each(array, function (key, value) {
+					if(key === "data") {
+						$('#registration-error').html(value);
+						$('#registration-error').show();
+					}
+				});
+			}
 		});
 	})
 
