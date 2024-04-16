@@ -51,6 +51,17 @@ jQuery(function ($) {
 		}, 1000);
 	});
 
+	$('form#customer_registration').submit(function (e) {
+		e.preventDefault();
+
+		$.ajax({
+			url: 'http://myshoes.com/wp-json/myshoes/v1/customer',
+			type: 'POST',
+			dataType: 'application/json',
+			data: $('form#customer_registration').serialize()
+		});
+	})
+
 	$('.toggle-product-reviews').on('click', function() {
 		$('.product_reviews').toggle();
 		$('.toggle-product-reviews i').toggleClass('fa-plus').toggleClass('fa-minus');
