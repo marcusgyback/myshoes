@@ -2,6 +2,7 @@
 
 require get_theme_file_path('/inc/product-review-routes.php');
 require get_theme_file_path('/inc/search-routes.php');
+require get_theme_file_path('/inc/customer-routes.php');
 
 function theme_files() {
     /* CSS-files */
