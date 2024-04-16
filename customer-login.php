@@ -46,7 +46,7 @@ get_header();
         </div>
         <div class="col-md-4">
             <h3>Don't have an account?</h3>
-            <a href="<?php home_url(); ?>/customer-registration" class="boy_bt_1">Create an account</a>
+            <a href="<?php echo home_url(); ?>/customer-registration" class="boy_bt_1">Create an account</a>
         </div>
     </div>
 </div>

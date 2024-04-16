@@ -34,17 +34,17 @@ get_header();
             <h3>Create an account</h3>
             <form id="customer_registration">
                 <label for="first_name">First name</label>
-                <input type="text" name="first_name" />
-                <label for="first_name">Last name</label>
-                <input type="text" name="last_name" />
-                <label for="first_name">Username</label>
-                <input type="text" name="username" />
-                <label for="first_name">Email</label>
-                <input type="text" name="email" />
-                <label for="first_name">Password</label>
-                <input type="password" name="password" />
-                <label for="first_name">Repeat password</label>
-                <input type="password" name="password2" />
+                <input id="first_name" type="text" name="first_name" />
+                <label for="last_name">Last name</label>
+                <input id="lastname" type="text" name="last_name" />
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" />
+                <label for="email">Email</label>
+                <input id="email" type="text" name="email" />
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" />
+                <label for="password2">Repeat password</label>
+                <input id="password2" type="password" name="password2" />
                 <input id="registration_btn" type="submit" class="boy_bt_1" value="Create account">
             </form>
         </div>
