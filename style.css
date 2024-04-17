@@ -23,6 +23,32 @@ body {
     font-weight: normal;
     overflow-x: hidden;
 }
+.profile h3 {
+    background: #faca16;
+    color: black;
+    padding: 10px;
+}
+.list-group-item-dark {
+    background: black;
+    font-size: 16px;
+    border: 1px solid #faca16;
+    color: white;
+}
+.list-group-item-dark:hover {
+    background: #faca16 !important;
+    color: black;
+    border-radius: 0 !important;
+}
+.list-group-item-dark.active {
+    background: #faca16 !important;
+    color: black !important;
+    border-radius: 0 !important;
+}
+#editProfile input {
+    width: 100%;
+    height: 40px;
+    padding-left: 5px;
+}
 #registration-error {
     background: #efa2a9;
     color: red;
@@ -750,8 +776,12 @@ button {
     padding: 6px 0px;
     font-weight: bold;
     border: 1px solid #f9ca16;
+    cursor: pointer;
 }
-
+.user-icon {
+    color: white;
+    margin-left: 10px;
+}
 .boy_bt_1:hover {
     color: #f9ca16;
     background-color: white;

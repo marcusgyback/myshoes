@@ -8,6 +8,7 @@ get_template_part('/template-parts/search-modal');
     <a class="header_cart" href="<?php echo WC()->cart->get_cart_url(); ?>">
         <i class="fa fa-shopping-cart"></i> <span><?php echo WC()->cart->get_cart_total(); ?></span>
     </a>
+    <a class="header_cart user-icon" href="/customer-profile"><i class="fa fa-user"></i></a>
 </div>
 <div class="menu_main">
     <div class="togle_main"><a class="class=" openbtn="" onclick="openNav()"><img src="<?php echo get_theme_file_uri(); ?>/images/toggle-icon.png" style="max-width: 100%;"></a></div>
