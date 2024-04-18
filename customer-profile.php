@@ -35,19 +35,12 @@ get_header();
 </div>
 <?php
     $current_user = wp_get_current_user();
-    $url = $_SERVER['REQUEST_URI'];
 ?>
 <!--header section end -->
 <div class="container">
     <div class="row mb-5 profile">
         <div class="col-md-3">
-            <div class="border-end bg-dark" id="sidebar-wrapper">
-                <div class="list-group lust-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-dark p-3 <?php if($url === '/customer-profile/') { print 'active'; } ?>" href="#">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-dark p-3" href="#">Orders</a>
-                    <a class="list-group-item list-group-item-action list-group-item-dark p-3" href="#">Log out</a>
-                </div>
-            </div>
+            <?php echo get_template_part('/template-parts/profile-menu'); ?>
         </div>
         <div class="col-md-9">
             <h3>Edit your profile information</h3>

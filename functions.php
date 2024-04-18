@@ -170,3 +170,9 @@ function apply_coupons() {
 
     return wp_send_json_success($data);
 }
+
+add_action('wp_logout', 'auto_redirect_after_logout');
+function auto_redirect_after_logout() {
+    wp_safe_redirect('/customer-login');
+    exit;
+}

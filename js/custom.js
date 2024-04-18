@@ -271,4 +271,10 @@ jQuery(function ($) {
 			});
 		}
 	});
+
+	$('.order-header i').on('click', function() {
+		let orderId = $(this).attr('data-id');
+		$(this).toggleClass('fa-arrow-circle-down').toggleClass('fa-arrow-circle-up');
+		$('.order-' + orderId).toggle();
+	});
 });

@@ -30,7 +30,7 @@ get_header();
 <!--header section end -->
 <?php
     $args = [
-        'redirect' => admin_url(),
+        'redirect' => '/customer-profile',
         'form_id' => 'customer_login',
         'label_username' => __('Username'),
         'label_password' => __('Password'),

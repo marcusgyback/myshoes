@@ -23,6 +23,23 @@ body {
     font-weight: normal;
     overflow-x: hidden;
 }
+.order-header {
+    display: flex;
+    background: black;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 2px solid #faca16;
+}
+.order-header .col i {
+    float: right;
+    font-size: 20px;
+    margin-top: 5px;
+}
+.order-body {
+    display: none;
+}
 .profile h3 {
     background: #faca16;
     color: black;
