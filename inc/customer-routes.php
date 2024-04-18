@@ -51,7 +51,8 @@ function create_account($data) {
 }
 
 function update_account($data) {
-    $user = wp_get_current_user();
+    $user = $data['id'];
+
     if(empty($data['first_name'])) {
         return wp_send_json_error('First name is required', 422);
     }

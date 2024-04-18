@@ -90,10 +90,17 @@ jQuery(function ($) {
 			type: 'PUT',
 			data: $('form#editProfile').serialize(),
 			success: function(response) {
-				
+				$('#profile-error').hide();
+				$('#profile-success').show();
 			},
 			error: function(response) {
-
+				let array = $.parseJSON(response.responseText);
+				$.each(array, function (key, value) {
+					if(key === "data") {
+						$('#profile-error').html(value);
+						$('#profile-error').show();
+					}
+				});
 			}
 		});
 	});

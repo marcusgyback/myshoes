@@ -2,6 +2,12 @@
 /*
  * Template Name: Customer profile
  */
+
+if(!is_user_logged_in()) {
+    wp_redirect('/customer-login');
+    exit();
+}
+
 get_header();
 ?>
 <!--header section start -->
@@ -45,6 +51,12 @@ get_header();
         </div>
         <div class="col-md-9">
             <h3>Edit your profile information</h3>
+            <div id="profile-success">
+                Your profile has been updated
+            </div>
+            <div id="profile-error">
+
+            </div>
             <form id="editProfile" method="post">
                 <label for="first_name">First Name</label>
                 <input type="text" name="first_name" value="<?php echo $current_user->shipping_first_name; ?>" />
@@ -57,9 +69,10 @@ get_header();
                 <label for="address">Address</label>
                 <input type="text" name="address" value="<?php echo $current_user->shipping_address_1; ?>" />
                 <label for="postcode">Postcode</label>
-                <input type="text" name="last_name" value="<?php echo $current_user->shipping_postcode; ?>" />
+                <input type="text" name="postcode" value="<?php echo $current_user->shipping_postcode; ?>" />
                 <label for="city">City</label>
-                <input type="text" name="last_name" value="<?php echo $current_user->shipping_city; ?>" />
+                <input type="text" name="city" value="<?php echo $current_user->shipping_city; ?>" />
+                <input hidden name="id" value="<?php echo $current_user->ID; ?>">
                 <input type="submit" class="boy_bt_1 mt-3" value="Update">
             </form>
         </div>
