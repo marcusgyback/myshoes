@@ -277,4 +277,31 @@ jQuery(function ($) {
 		$(this).toggleClass('fa-arrow-circle-down').toggleClass('fa-arrow-circle-up');
 		$('.order-' + orderId).toggle();
 	});
+
+	$('#contactForm').submit(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: 'http://myshoes.com/wp-json/myshoes/v1/contact',
+			type: 'POST',
+			data: $('form#contactForm').serialize(),
+			success: function(response) {
+				$('#contact-error').hide();
+				$('#contact-success').show();
+				$('#contactName').val('');
+				$('#contactEmail').val('');
+				$('#contactPhone').val('');
+				$('#contactMessage').val('');
+			},
+			error: function(response) {
+				console.log(response.responseText);
+				let array = $.parseJSON(response.responseText);
+				$.each(array, function (key, value) {
+					if(key === "data") {
+						$('#contact-error').html(value);
+						$('#contact-error').show();
+					}
+				});
+			}
+		});
+	});
 });

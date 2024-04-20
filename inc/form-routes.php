@@ -30,4 +30,6 @@ function add_question($data) {
     add_post_meta($post, 'acf_contactform_name', $data['name']);
     add_post_meta($post, 'acf_contactform_email', $data['email']);
     add_post_meta($post, 'acf_contactform_phone', $data['phone']);
+
+    wp_send_json_success('Message has been sent');
 }

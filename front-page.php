@@ -231,19 +231,27 @@ get_header();
             <div class="row">
                 <div class="col-md-6">
                     <div class="email_text">
-                        <div class="form-group">
-                            <input type="text" class="email-bt" placeholder="Name" name="Email">
+                        <div id="contact-success">
+                            Your message has been sent.
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="email-bt" placeholder="Email" name="Email">
+                        <div id="contact-error">
+                            First name is required
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="email-bt" placeholder="Phone Numbar" name="Email">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                        </div>
-                        <div class="send_btn"><a href="#">SEND</a></div>
+                        <form id="contactForm" method="post">
+                            <div class="form-group">
+                                <input id="contactName" type="text" class="email-bt" placeholder="Name" name="name">
+                            </div>
+                            <div class="form-group">
+                                <input id="contactEmail" type="text" class="email-bt" placeholder="Email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <input id="contactPhone" type="text" class="email-bt" placeholder="Phone Numbar" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="contactMessage" class="massage-bt" placeholder="Massage" rows="5" id="comment" name="message"></textarea>
+                            </div>
+                           <input type="submit" class="send_btn" value="SEND">
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-6">
