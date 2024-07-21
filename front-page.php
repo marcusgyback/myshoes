@@ -16,7 +16,7 @@ get_header();
                     <div class="container">
                         <h1 class="banner_taital"><?php echo get_field('acf_start_page_banner_heading'); ?></h1>
                         <p class="lorem_text"><?php echo get_field('acf_start_page_banner_text'); ?></p>
-                        <?php if(get_field('acf_show_call_to_action_button') == true) { ?>
+                        <?php if(get_field('acf_show_call_to_action_button') === true) { ?>
                             <div class="buy_bt"><a href="<?php echo get_field('acf_call_to_action_button_link')['guid']; ?>">
                                 <?php echo get_field('acf_call_to_action_button_text'); ?>
                             </a></div>

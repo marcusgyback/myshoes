@@ -172,8 +172,83 @@ function apply_coupons() {
     return wp_send_json_success($data);
 }
 
+/*
+ * Function to redirect user to the login page after logout
+ */
 add_action('wp_logout', 'auto_redirect_after_logout');
 function auto_redirect_after_logout() {
     wp_safe_redirect('/customer-login');
     exit;
+}
+
+/*
+ * Function to display email in the contact post type
+ */
+add_filter('manage_contactform_posts_columns', 'set_custom_edit_contactform_name');
+function set_custom_edit_contactform_name($columns) {
+    $columns['contact_name'] = 'Name';
+    return $columns;
+}
+add_action('manage_contactform_posts_custom_column', 'custom_contactform_name', 10, 2);
+function custom_contactform_name($column, $post_id) {
+    switch($column) {
+        case 'contact_name':
+            echo get_field('acf_contactform_name', $post_id);
+            break;
+    }
+}
+
+/*
+ * Function to display email in the contact post type
+ */
+add_filter('manage_contactform_posts_columns', 'set_custom_edit_contactform_email');
+function set_custom_edit_contactform_email($columns) {
+    $columns['contact_email'] = 'email';
+    return $columns;
+}
+add_action('manage_contactform_posts_custom_column', 'custom_contactform_email', 10, 2);
+function custom_contactform_email($column, $post_id) {
+    switch($column) {
+        case 'contact_email':
+            echo get_field('acf_contactform_email', $post_id);
+            break;
+    }
+}
+
+/*
+ * Function to display phone in the contact post type
+ */
+add_filter('manage_contactform_posts_columns', 'set_custom_edit_contactform_phone');
+function set_custom_edit_contactform_phone($columns) {
+    $columns['contact_phone'] = 'phone';
+    return $columns;
+}
+add_action('manage_contactform_posts_custom_column', 'custom_contactform_phone', 10, 2);
+function custom_contactform_phone($column, $post_id) {
+    switch($column) {
+        case 'contact_phone':
+            echo get_field('acf_contactform_phone', $post_id);
+            break;
+    }
+}
+
+/*
+ * Function to display the message in the contact post type
+ */
+add_filter('manage_contactform_posts_columns', 'set_custom_edit_contactform_message');
+function set_custom_edit_contactform_message($columns) {
+    $columns['contact_message'] = 'message';
+    return $columns;
+}
+add_action('manage_contactform_posts_custom_column', 'custom_contactform_message', 10, 2);
+function custom_contactform_message($column, $post_id) {
+
+    $content_post = get_post($post_id);
+    $content = $content_post->post_content;
+
+    switch($column) {
+        case 'contact_message':
+            echo $content;
+            break;
+    }
 }
